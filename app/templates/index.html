@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+	<h1>Wilkommen bei Cleaning-Schedule</h1><br>
+
+	<table class="table">
+		<tr>
+			<th>Name</th>
+			<th>Datum</th>
+			<th>Adresse</th>
+			<th>Wohnung</th>
+			<th>Status</th>
+			<th>Bemerkungen</th>
+			<th>Änderungen vornehmen</th>
+		</tr>
+
+		 {% for cleaning in clean %}
+                <tr>
+                        <td>{{ cleaning.name }}</td>
+			<td>{{ cleaning.timestamp }}</td>
+			<td>{{ cleaning.adresse }}</td>
+                        <td>{{ cleaning.wohnung }}</td>
+                        <td>{{ cleaning.status }}</td>
+                        <td>{{ cleaning.bemerkung }}</td>
+			<td><a href="edit/{{ cleaning.id }}">Bearbeiten</a> | <a href="delete/{{ cleaning.id }}">Löschen</a></td>
+                        
+                </tr>
+                {% endfor %}
+        </table>
+{% endblock %}

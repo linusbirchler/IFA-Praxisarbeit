@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+        <h1>Neue Reinigung</h1><br>
+                <form action="" method="post">
+                        {{ form.csrf_token }}
+                <p>
+                        {{ form.name.label }}:<br>
+                        {{ form.name(size=40) }}<br>
+                        {% for error in form.name.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                </p>
+                <p>
+                        {{ form.adresse.label }}:<br>
+                        {{ form.adresse(size=40) }}<br>
+                        {% for error in form.adresse.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                </p>
+   <p>
+                        {{ form.wohnung.label }}:<br>
+                        {{ form.wohnung(size=10) }}<br>
+                        {% for error in form.wohnung.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                </p>
+                <p>
+                        {{ form.status.label }}:<br>
+                        {{ form.status() }}
+                </p>
+                <p>
+                        {{ form.bemerkung.label }}:<br>
+                        {{ form.bemerkung(size=40) }}<br>
+                        {% for error in form.bemerkung.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                </p>
+                <p>{{ form.submit() }}</p>
+        </form>
+{% endblock %}
+		
