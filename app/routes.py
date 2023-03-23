@@ -1,4 +1,4 @@
-
+#Eigenentwicklung
 from flask import render_template, flash, redirect, url_for, request
 from app import app
 from app.forms import LoginForm, RegistrationForm, CleaningForm
@@ -39,13 +39,14 @@ def login():
             next_page = url_for('index')
             return redirect(next_page)
 
+#Eigenentwicklung
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
 
-
+#Übernommen
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -61,6 +62,7 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
+#Eigenentwicklung
 @app.route('/cleaning', methods=['GET', 'POST'])
 @login_required
 def cleaning():
@@ -75,6 +77,8 @@ def cleaning():
         return redirect(url_for('index'))
     return render_template('cleaning.html', title='Cleaning', form=form)
 
+
+#Eigenentwicklung
 @app.route('/edit/<id>', methods=['GET','POST'])
 @login_required
 def edit(id):
@@ -112,7 +116,7 @@ def delete(id):
         flash('ID nicht gefunden.')
     return redirect(url_for('index'))
 
-
+#Eigenentwicklung
 @app.route('/auftrag', methods=['GET'])
 def auftrag():
     return render_template('auftrag.html', title='Auftrag')

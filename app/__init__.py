@@ -1,3 +1,4 @@
+#Eigenentwicklung
 from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
@@ -14,4 +15,4 @@ login.login_view = 'login'
 login.login_message = 'Bitte loggen Sie sich ein!'
 bootstrap = Bootstrap(app)
 
-from app import routes, models
+from app import routes, models, api

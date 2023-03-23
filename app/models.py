@@ -1,4 +1,4 @@
-
+#Eigenentwicklung
 from app import login
 from datetime import datetime
 from app import db
@@ -6,10 +6,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from flask import url_for
 
+#Übernommen
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
 
+#Eigenentwicklung
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
@@ -28,7 +30,7 @@ class User(UserMixin, db.Model):
                 'id': self.id,
                 'username': self.username,
                 '_links': {
-                    'self': url_for('get_user', id=self.id)
+                    'self': url_for('get_users', id=self.id)
                     }
                 }
         if include_email:
@@ -43,6 +45,7 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
+#Eigenentwicklung
 class Cleaning(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), index=True)
@@ -57,7 +60,6 @@ class Cleaning(db.Model):
         data2 = {
                 'name': self.name,
                 'adresse': self.adresse,
-                'date': self.date,
                 'wohnung': self.wohnung,
                 'status': self.status,
                 'bemerkung': self.bemerkung,
